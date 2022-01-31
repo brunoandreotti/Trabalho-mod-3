@@ -37,3 +37,9 @@ ALTER TABLE `game_details` ADD FOREIGN KEY (`TEAM_ID`) REFERENCES `teams` (`TEAM
 ALTER TABLE `game_details` ADD FOREIGN KEY (`GAME_ID`) REFERENCES `games` (`GAME_ID`);
 
 ALTER TABLE `game_details` ADD FOREIGN KEY (`PLAYER_ID`) REFERENCES `players` (`PLAYER_ID`);
+
+
+
+--importação de dados nas tabelas
+
+
