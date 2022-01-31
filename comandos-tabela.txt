@@ -3,3 +3,27 @@ COMANDOS: CRIAÇÃO E INSERÇãO DE DADOS NAS TABELAS
 CREATE DATABASE `M3_NBA`
 
 USE `M3_NBA`
+
+CREATE TABLE `games` (
+  `GAME_DATE_EST` text,
+  `GAME_ID` int PRIMARY KEY,
+  `HOME_TEAM_ID` int,
+  `VISITOR_TEAM_ID` int,
+  `SEASON` int,
+  `PTS_home` int,
+  `PTS_away` int,
+  `HOME_TEAM_WINS` int
+);
+
+CREATE TABLE `players` (
+  `PLAYER_NAME` text,
+  `TEAM_ID` int,
+  `PLAYER_ID` int PRIMARY KEY,
+  `SEASON` int
+);
+
+CREATE TABLE `teams` (
+  `LEAGUE_ID` text,
+  `TEAM_ID` int PRIMARY KEY,
+  `ABBREVIATION` text
+);
