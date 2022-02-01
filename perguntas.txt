@@ -1,1 +1,3 @@
 PERGUNTAS E QUERIES QUE SERÃO FEITAS NO BANCO DE DADOS
+
+Quais foram os 5 times que mais pontuaram jogando em casa entre 2012 e 2019?
