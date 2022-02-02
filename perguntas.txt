@@ -1,1 +1,4 @@
 PERGUNTAS E QUERIES QUE SERÃO FEITAS NO BANCO DE DADOS
+Qual time teve mais jogadores nas temporadas de 2009 a 2019?
+R: Select team_id,nickname, count(team_id) from players inner join teams using (team_id) group by team_id order by count(TEAM_ID) desc limit 5
+Teste
