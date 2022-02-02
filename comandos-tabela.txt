@@ -1,38 +1,45 @@
 COMANDOS: CRIAÇÃO E INSERÇãO DE DADOS NAS TABELAS
 
-CREATE DATABASE `M3_NBA`
+--criação da database
 
-USE `M3_NBA`
+  CREATE DATABASE `M3_NBA`
 
-CREATE TABLE `games` (
-  `GAME_DATE_EST` text,
-  `GAME_ID` int PRIMARY KEY,
-  `HOME_TEAM_ID` int,
-  `VISITOR_TEAM_ID` int,
-  `SEASON` int,
-  `PTS_home` int,
-  `PTS_away` int,
-  `HOME_TEAM_WINS` int
-);
+-- inicialização da database
 
-CREATE TABLE `teams` (
-  `LEAGUE_ID` text,
-  `TEAM_ID` int PRIMARY KEY,
-  `ABBREVIATION` text
-);
+  USE `M3_NBA`
 
-ALTER TABLE `games` ADD FOREIGN KEY (`HOME_TEAM_ID`) REFERENCES `teams` (`TEAM_ID`);
+-- criação das tabelas
 
-ALTER TABLE `games` ADD FOREIGN KEY (`VISITOR_TEAM_ID`) REFERENCES `teams` (`TEAM_ID`);
+  CREATE TABLE `games` (
+    `GAME_DATE_EST` text,
+    `GAME_ID` int PRIMARY KEY,
+    `HOME_TEAM_ID` int,
+    `VISITOR_TEAM_ID` int,
+    `SEASON` int,
+    `PTS_home` int,
+    `PTS_away` int,
+    `HOME_TEAM_WINS` int
+  );
+
+  CREATE TABLE `teams` (
+    `LEAGUE_ID` text,
+    `TEAM_ID` int PRIMARY KEY,
+    `ABBREVIATION` text
+  );
+
+-- adição das chaves estrangeiras
+
+  ALTER TABLE `games` ADD FOREIGN KEY (`HOME_TEAM_ID`) REFERENCES `teams` (`TEAM_ID`);
+
+  ALTER TABLE `games` ADD FOREIGN KEY (`VISITOR_TEAM_ID`) REFERENCES `teams` (`TEAM_ID`);
 
 --importação de dados nas tabelas
 
 --Query
---
---
+
 -- Qual time fez mais pontos jogando fora de casa de 2003 até 2013?
 
-SELECT SUM(PTS_home), NICKNAME, TEAM_ID, ABBREVIATION FROM GAMES INNER JOIN TEAMS
-ON games.VISITOR_TEAM_ID = teams.TEAM_ID
-WHERE SEASON IN (2003, 2013)
-GROUP BY TEAM_ID ORDER BY SUM(PTS_home) DESC LIMIT 1;
+  SELECT SUM(PTS_home), NICKNAME, TEAM_ID, ABBREVIATION FROM GAMES INNER JOIN TEAMS
+  ON games.VISITOR_TEAM_ID = teams.TEAM_ID
+  WHERE SEASON IN (2003, 2013)
+  GROUP BY TEAM_ID ORDER BY SUM(PTS_home) DESC LIMIT 1;
