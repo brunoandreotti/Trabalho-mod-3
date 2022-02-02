@@ -15,13 +15,6 @@ CREATE TABLE `games` (
   `HOME_TEAM_WINS` int
 );
 
-CREATE TABLE `players` (
-  `PLAYER_NAME` text,
-  `TEAM_ID` int,
-  `PLAYER_ID` int PRIMARY KEY,
-  `SEASON` int
-);
-
 CREATE TABLE `teams` (
   `LEAGUE_ID` text,
   `TEAM_ID` int PRIMARY KEY,
