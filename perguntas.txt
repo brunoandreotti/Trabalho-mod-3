@@ -1,1 +1,5 @@
 PERGUNTAS E QUERIES QUE SERÃO FEITAS NO BANCO DE DADOS
+
+Quais foram os 5 jogadores que jogaram em mais times?
+
+select player_name, count(team_id) from players group by player_name order by count(team_id) desc limit 5;
