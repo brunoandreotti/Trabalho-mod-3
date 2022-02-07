@@ -1,8 +1,16 @@
 PERGUNTAS E QUERIES QUE SERÃO FEITAS NO BANCO DE DADOS
 
 
+-- Qual time fez mais pontos jogando fora de casa de 2003 até 2013?
+
+  SELECT SUM(PTS_away), NICKNAME, TEAM_ID, ABBREVIATION FROM GAMES INNER JOIN TEAMS
+  ON games.VISITOR_TEAM_ID = teams.TEAM_ID
+  WHERE SEASON IN (2003, 2013)
+  GROUP BY TEAM_ID ORDER BY SUM(PTS_away) DESC LIMIT 5;
+
 
 -- Qual time teve mais jogadores nas temporadas de 2009 a 2019?
+
 Select team_id,nickname, count(team_id) from players inner join teams using (team_id) group by team_id order by count(TEAM_ID) desc limit 5
 Teste
 
