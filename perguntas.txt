@@ -1,5 +1,20 @@
 PERGUNTAS E QUERIES QUE SERÃO FEITAS NO BANCO DE DADOS
 
-Quais foram os 5 jogadores que jogaram em mais times?
+
+-- Quais foram os 5 jogadores que jogaram em mais times?
 
 select player_name, count(team_id) from players group by player_name order by count(team_id) desc limit 5;
+
+-- Qual time mais venceu jogando em casa?
+
+select HOME_TEAM_ID,
+ ABBREVIATION as ABREV,
+ NICKNAME as APELIDO, COUNT(HOME_TEAM_ID) as TOTAL_VITORIAS,
+ HOME_TEAM_WINS as VIT_CASA
+from games
+inner join teams
+on games.HOME_TEAM_ID = teams.TEAM_ID
+group by HOME_TEAM_ID
+having VIT_CASA = 1
+order by TOTAL_VITORIAS desc;
+
