@@ -1,14 +1,1 @@
 PERGUNTAS E QUERIES QUE SERÃO FEITAS NO BANCO DE DADOS
-
--- Qual time mais venceu jogando em casa?
-
-select HOME_TEAM_ID,
- ABBREVIATION as ABREV,
- NICKNAME as APELIDO, COUNT(HOME_TEAM_ID) as TOTAL_VITORIAS,
- HOME_TEAM_WINS as VIT_CASA
-from games
-inner join teams
-on games.HOME_TEAM_ID = teams.TEAM_ID
-group by HOME_TEAM_ID
-having VIT_CASA = 1
-order by TOTAL_VITORIAS desc;
