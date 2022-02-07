@@ -35,11 +35,4 @@ COMANDOS: CRIAÇÃO E INSERÇãO DE DADOS NAS TABELAS
 
 --importação de dados nas tabelas
 
---Query
 
--- Qual time fez mais pontos jogando fora de casa de 2003 até 2013?
-
-  SELECT SUM(PTS_home), NICKNAME, TEAM_ID, ABBREVIATION FROM GAMES INNER JOIN TEAMS
-  ON games.VISITOR_TEAM_ID = teams.TEAM_ID
-  WHERE SEASON IN (2003, 2013)
-  GROUP BY TEAM_ID ORDER BY SUM(PTS_away) DESC LIMIT 1;
