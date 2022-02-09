@@ -1,1 +1,46 @@
+
 PERGUNTAS E QUERIES QUE SERÃO FEITAS NO BANCO DE DADOS
+
+
+-- Quais foram os 5 times que mais pontuaram jogando em casa entre 2012 e 2019?
+
+SELECT SUM(PTS_home), NICKNAME, TEAM_ID, ABBREVIATION FROM GAMES INNER JOIN TEAMS 
+ON games.HOME_TEAM_ID = teams.TEAM_ID
+WHERE SEASON IN (2012, 2019)
+GROUP BY TEAM_ID ORDER BY SUM(PTS_home) DESC LIMIT 5;
+
+
+-- Qual time fez mais pontos jogando fora de casa de 2003 até 2013?
+
+  SELECT SUM(PTS_away), NICKNAME, TEAM_ID, ABBREVIATION FROM GAMES INNER JOIN TEAMS
+  ON games.VISITOR_TEAM_ID = teams.TEAM_ID
+  WHERE SEASON IN (2003, 2013)
+  GROUP BY TEAM_ID ORDER BY SUM(PTS_away) DESC LIMIT 5;
+
+
+-- Qual time teve mais jogadores nas temporadas de 2009 a 2019?
+
+Select team_id,nickname, count(team_id) from players inner join teams using (team_id) group by team_id order by count(TEAM_ID) desc limit 5
+Teste
+
+
+-- Quais foram os 5 jogadores que jogaram em mais times?
+
+select player_name, count(team_id) from players group by player_name order by count(team_id) desc limit 5;
+
+
+-- Qual time mais venceu jogando em casa?
+
+select HOME_TEAM_ID,
+ ABBREVIATION as ABREV,
+ NICKNAME as APELIDO, COUNT(HOME_TEAM_ID) as TOTAL_VITORIAS,
+ HOME_TEAM_WINS as VIT_CASA
+from games
+inner join teams
+on games.HOME_TEAM_ID = teams.TEAM_ID
+group by HOME_TEAM_ID
+having VIT_CASA = 1
+order by TOTAL_VITORIAS desc;
+
+
+=======
