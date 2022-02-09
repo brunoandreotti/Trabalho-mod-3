@@ -1,7 +1,7 @@
 PERGUNTAS E QUERIES QUE SERÃO FEITAS NO BANCO DE DADOS
 
 
-Quais foram os 5 times que mais pontuaram jogando em casa entre 2012 e 2019?
+-- Quais foram os 5 times que mais pontuaram jogando em casa entre 2012 e 2019?
 
 SELECT SUM(PTS_home), NICKNAME, TEAM_ID, ABBREVIATION FROM GAMES INNER JOIN TEAMS 
 ON games.HOME_TEAM_ID = teams.TEAM_ID
