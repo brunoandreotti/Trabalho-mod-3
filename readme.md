@@ -83,6 +83,16 @@ ORDER BY TOTAL_VITORIAS desc;
 
  <br><br>
 
+ <b> Quais foram os 5 times que mais pontuaram jogando em casa entre 2012 e 2019?</b> <br>
+
+ SELECT SUM(PTS_home), NICKNAME, TEAM_ID, ABBREVIATION <br>
+  FROM GAMES INNER JOIN TEAMS <br>
+ON games.HOME_TEAM_ID = teams.TEAM_ID <br>
+WHERE SEASON IN (2012, 2019) <br>
+GROUP BY TEAM_ID ORDER BY SUM(PTS_home) DESC LIMIT 5;
+
+ <br><br>
+
 
 
 
